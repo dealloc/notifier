@@ -15,7 +15,7 @@
 							@foreach ($webhooks as $webhook)
 							<li class="list-group-item">
 								{{ $webhook->name }}
-								<a class="pull-right" href="#">edit</a>
+								<a class="pull-right" href="{{ route('hooks.show', compact('webhook')) }}">edit</a>
 							</li>
 							@endforeach
 						</ul>

@@ -11,4 +11,6 @@ $router->group(['middleware' => 'auth'], function(\Illuminate\Routing\Router $ro
     $router->get('/home', 'WebhookController@index')->name('home');
     $router->get('/hooks/new', 'WebhookController@new')->name('hooks.new');
     $router->post('/hooks', 'WebhookController@create')->name('hooks.create');
+    $router->get('/hooks/{webhook}', 'WebhookController@show')->name('hooks.show');
+    $router->post('/hooks/{webhook}', 'WebhookController@update')->name('hooks.update');
 });

@@ -32,8 +32,25 @@ final class WebhookController extends Controller
         $hook->endpoint = $request->get('url');
         $hook->saveOrFail();
 
-        return redirect()
-            ->route('home')
-            ->getSession()->flash('info', 'Webhook created!');
+        $request->session()->flash('info', 'Webhook created!');
+        return redirect()->route('home');
+    }
+
+    public function show(Webhook $webhook)
+    {
+        return view('webhooks.show')->with([
+            'webhook' => $webhook,
+        ]);
+    }
+
+    public function update(Request $request, Webhook $webhook)
+    {
+        $webhook->name = $request->get('name');
+        $webhook->secret = $request->get('identifier');
+        $webhook->endpoint = $request->get('url');
+        $webhook->saveOrFail();
+
+        $request->session()->flash('info', 'Webhook updated!');
+        return redirect()->route('home');
     }
 }
