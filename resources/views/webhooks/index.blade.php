@@ -11,7 +11,14 @@
 					</div>
 
 					<div class="panel-body">
-						webhooks go here
+						<ul class="list-group">
+							@foreach ($webhooks as $webhook)
+							<li class="list-group-item">
+								{{ $webhook->name }}
+								<a class="pull-right" href="#">edit</a>
+							</li>
+							@endforeach
+						</ul>
 					</div>
 				</div>
 			</div>
