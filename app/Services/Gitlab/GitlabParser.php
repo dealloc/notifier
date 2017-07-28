@@ -3,6 +3,7 @@
 namespace App\Services\Gitlab;
 
 use App\Services\Discord\Content\Embed;
+use App\Services\Discord\Content\Image;
 use App\Services\Discord\Content\Message;
 
 final class GitlabParser
@@ -36,7 +37,7 @@ final class GitlabParser
         $embed->setTitle($username . ' ' . $issue_action . ' issue #' . $issue_id)
             ->setDescription('Issue #' . $issue_id . ' was ' . $issue_action . ' on ' . $project . PHP_EOL . $issue_title)
             ->setUrl($issue_url)
-            ->setThumbnail($thumbnail);
+            ->setThumbnail((new Image)->setUrl($thumbnail));
         // End parsing
 
         return $message->addEmbed($embed);
