@@ -7,7 +7,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading clearfix">
 						Webhooks
-						<a class="pull-right" href="">Create new webhook</a>
+						<a class="pull-right" href="{{ route('hooks.new') }}">Create new webhook</a>
 					</div>
 
 					<div class="panel-body">

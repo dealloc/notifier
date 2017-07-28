@@ -28,4 +28,9 @@ class HomeController extends Controller
             'webhooks' => $webhook->all(),
         ]);
     }
+
+    public function new()
+    {
+        return view('webhooks.new');
+    }
 }
