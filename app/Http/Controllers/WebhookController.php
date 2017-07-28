@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Webhook;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+final class WebhookController extends Controller
 {
     /**
      * Create a new controller instance.
