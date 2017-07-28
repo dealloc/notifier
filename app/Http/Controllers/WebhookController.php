@@ -23,4 +23,17 @@ final class WebhookController extends Controller
     {
         return view('webhooks.new');
     }
+
+    public function create(Request $request)
+    {
+        $hook = new Webhook;
+        $hook->name = $request->get('name');
+        $hook->secret = $request->get('identifier');
+        $hook->endpoint = $request->get('url');
+        $hook->saveOrFail();
+
+        return redirect()
+            ->route('home')
+            ->getSession()->flash('info', 'Webhook created!');
+    }
 }
