@@ -14,7 +14,7 @@ final class WebhookController extends Controller
      */
     public function index(Webhook $webhook)
     {
-        return view('home')->with([
+        return view('webhooks.index')->with([
             'webhooks' => $webhook->all(),
         ]);
     }
