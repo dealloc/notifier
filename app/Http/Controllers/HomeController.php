@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Webhook;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,8 +22,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Webhook $webhook)
     {
-        return view('home');
+        return view('home')->with([
+            'webhooks' => $webhook->all(),
+        ]);
     }
 }
