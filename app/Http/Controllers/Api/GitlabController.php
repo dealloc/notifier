@@ -15,15 +15,17 @@ final class GitlabController extends Controller
         $key = $request->header('X-Gitlab-Token');
         $type = $request->header('X-Gitlab-Event');
         $payload = $request->json()->all();
-        /* @var Webhook $webhook */
-        $webhook = Webhook::query()->where('secret', $key)->firstOrFail();
+        /* @var Webhook[] $webhooks */
+        $webhooks = Webhook::query()->where('secret', $key)->get();
 
-        if (is_null($webhook)) {
+        if (is_null($webhooks) || empty($webhooks)) {
             return response('', 404);
         }
 
         $message = $parser->parse($type, $payload);
-        $service->send($webhook, $message);
+        foreach ($webhooks as $webhook) {
+            $service->send($webhook, $message);
+        }
 
         return response()->json([]);
     }
