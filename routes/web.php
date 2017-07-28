@@ -7,7 +7,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-$router->group([], function(\Illuminate\Routing\Router $router) {
+$router->group(['middleware' => 'auth'], function(\Illuminate\Routing\Router $router) {
     $router->get('/home', 'WebhookController@index')->name('home');
     $router->get('/hooks/new', 'WebhookController@new')->name('hooks.new');
     $router->post('/hooks', 'WebhookController@create')->name('hooks.create');
