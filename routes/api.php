@@ -3,4 +3,4 @@
 
 use Illuminate\Http\Request;
 
-$router->get('/gitlab', 'Api\GitlabController@index');
+$router->post('/gitlab', 'Api\GitlabController@index');

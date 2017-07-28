@@ -75,7 +75,7 @@ final class Embed
      * @param Image|null $thumbnail
      * @return Embed
      */
-    public function setThumbnail(Image $thumbnail)
+    public function setThumbnail($thumbnail)
     {
         $this->thumbnail = $thumbnail;
         return $this;
