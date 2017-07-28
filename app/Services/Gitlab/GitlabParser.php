@@ -28,7 +28,7 @@ final class GitlabParser
         // Begin parsing
         $project = $payload['project']['namespace'] . '/' . $payload['project']['name'];
         $username = $payload['user']['username'];
-        $thumbnail = 'https://gitlab.com' . $payload['project']['avatar_url'];
+        $thumbnail = 'https://gitlab.com' . $payload['user']['avatar_url'];
         $issue_id = $payload['object_attributes']['iid'];
         $issue_title = $payload['object_attributes']['title'];
         $issue_url = $payload['object_attributes']['url'];
